@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:background="@drawable/background2">
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/etEmail"
+        android:layout_marginTop="133dp"
+        android:hint="Username"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="157dp" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/etUserName"
+        android:layout_marginTop="190dp"
+        android:hint="Password"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="198dp" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="79dp"
+        android:hint="Email"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="111dp" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/etUserName"
+        android:layout_marginBottom="209dp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/amiko"
+        android:text="Sign Up"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:onClick="onSignup"/>
+</RelativeLayout>
