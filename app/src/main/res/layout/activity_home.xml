@@ -32,6 +32,7 @@
         android:fontFamily="@font/amiko"
         android:onClick="onSignup"
         android:text="Sign Up"
+        android:textColor="#000000"
         android:textSize="18sp"
         tools:layout_editor_absoluteX="92dp"
         tools:layout_editor_absoluteY="350dp" />
@@ -41,10 +42,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="112dp"
+        android:layout_toEndOf="@+id/imageView"
         android:fontFamily="@font/dancing_script"
         android:text="Instagram"
         android:textColor="#FFFFFF"
         android:textSize="50sp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="71dp"
+        android:layout_height="49dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btnLogin"
+        android:layout_marginTop="123dp"
+        app:srcCompat="@drawable/icon" />
 </RelativeLayout>
