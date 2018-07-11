@@ -7,6 +7,29 @@
     tools:context=".MainActivity"
     android:background="@color/white">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="Orientation"
+        android:id="@+id/swipeContainer">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvPost"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:paddingTop="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_post" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -59,14 +82,5 @@
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="78dp"
-        app:srcCompat="@mipmap/ic_launcher" />
 
 </RelativeLayout>
