@@ -92,12 +92,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetchTimelineAsync(int page) {
-        // TODO - do stuff
+        showProgressBar();
+        final Post.Query postQuery = new Post.Query();
+        postQuery
+                .getTop()
+                .withUser();
+
+        postQuery.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> objects, ParseException e) {
+                if (e == null) {
+                    posts.clear();
+                    // add the objects
+                    posts.addAll(objects);
+                    // notify the adapter
+                    postAdapter.notifyDataSetChanged();
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        swipeContainer.setRefreshing(false);
+        hideProgressBar();
     }
 
     public void onLogout(View view) {
         ParseUser.logOut();
         Intent i = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(i);
+    }
+
+    public void showProgressBar() {
+        // Show progress item
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }
