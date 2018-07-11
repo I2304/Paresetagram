@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,24 +15,57 @@
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
         android:minHeight="?attr/actionBarSize"
-        app:titleTextColor="@android:color/black">
+        app:titleTextColor="@android:color/black"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="30dp">
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="28dp"
-                android:layout_height="30dp"
+                android:id="@+id/logout"
+                android:layout_width="23dp"
+                android:layout_height="19dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginEnd="14dp"
+                android:layout_marginEnd="11dp"
+                android:onClick="onLogout"
                 app:srcCompat="@drawable/user"
                 tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="219dp" />
+
+            <ImageView
+                android:id="@+id/camera"
+                android:layout_width="23dp"
+                android:layout_height="19dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:srcCompat="@drawable/instagram_new_post_outline_24"
+                tools:layout_editor_absoluteX="178dp"
                 tools:layout_editor_absoluteY="219dp"
-                android:onClick="onLogout"/>
+                android:onClick="dispatchTakePictureIntent"/>
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/nav_logo_whiteout"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="219dp"
+                />
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+</RelativeLayout>
