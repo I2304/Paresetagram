@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".PostActivity"
     android:background="@color/white">
 
     <android.support.v7.widget.Toolbar
@@ -24,27 +24,25 @@
             android:layout_height="30dp">
 
             <ImageView
-                android:id="@+id/logout"
+                android:id="@+id/ivLogout"
                 android:layout_width="23dp"
                 android:layout_height="19dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginEnd="11dp"
-                android:onClick="onLogout"
                 app:srcCompat="@drawable/user"
                 tools:layout_editor_absoluteX="178dp"
                 tools:layout_editor_absoluteY="219dp" />
 
             <ImageView
-                android:id="@+id/post"
+                android:id="@+id/ivPost"
                 android:layout_width="23dp"
                 android:layout_height="19dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 app:srcCompat="@drawable/instagram_new_post_outline_24"
                 tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp"
-                android:onClick="onPost"/>
+                tools:layout_editor_absoluteY="219dp" />
 
             <ImageView
                 android:id="@+id/logo"
@@ -62,11 +60,35 @@
 
     <ImageView
         android:id="@+id/ivImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="145dp"
+        android:onClick="dispatchTakePictureIntent"
+        app:srcCompat="@drawable/camera_shadow_fill" />
+
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="345dp"
+        android:layout_height="144dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:hint="Caption"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textColorHint="#D3D3D3" />
+
+    <Button
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="78dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/amiko"
+        android:onClick="onSubmit"
+        android:text="POST" />
 
 </RelativeLayout>
+
