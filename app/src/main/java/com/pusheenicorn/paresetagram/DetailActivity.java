@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -87,5 +88,16 @@ public class DetailActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return relativeDate;
+    }
+
+    public void onLike(View view) {
+        ImageButton aButton = (ImageButton)view;
+        if (!post.liked) {
+            aButton.setImageResource(R.drawable.ufi_heart);
+        }
+        else {
+            aButton.setImageResource(R.drawable.ufi_heart_active);
+        }
+        post.liked = !post.liked;
     }
 }

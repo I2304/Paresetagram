@@ -12,6 +12,9 @@ public class Post extends ParseObject {
     private static final String KEY_IMAGE = "image";
     private static final String KEY_USER = "user";
     private static final String KEY_LOCATION = "location";
+    
+    public boolean liked = false;
+
 
     public String getLocation() {
         return getString(KEY_LOCATION);

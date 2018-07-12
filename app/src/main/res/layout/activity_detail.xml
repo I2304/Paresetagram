@@ -55,14 +55,15 @@
         android:textColor="@color/colorPrimary"
         android:textSize="16sp" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivLike"
         android:layout_width="33dp"
         android:layout_height="30dp"
         android:layout_alignStart="@+id/ivImage"
         android:layout_below="@+id/ivImage"
         android:layout_marginTop="-96dp"
-        app:srcCompat="@drawable/ufi_heart" />
+        app:srcCompat="@drawable/ufi_heart"
+        android:onClick="onLike"/>
 
     <ImageView
         android:id="@+id/ivComment"
