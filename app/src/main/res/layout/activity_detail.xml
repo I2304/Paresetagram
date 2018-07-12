@@ -62,8 +62,9 @@
         android:layout_alignStart="@+id/ivImage"
         android:layout_below="@+id/ivImage"
         android:layout_marginTop="-96dp"
-        app:srcCompat="@drawable/ufi_heart"
-        android:onClick="onLike"/>
+        android:background="@android:color/transparent"
+        android:onClick="onLike"
+        app:srcCompat="@drawable/ufi_heart" />
 
     <ImageView
         android:id="@+id/ivComment"
@@ -167,5 +168,16 @@
         android:layout_marginTop="-96dp"
         android:layout_toEndOf="@+id/ivComment"
         app:srcCompat="@drawable/ufi_new_direct" />
+
+    <TextView
+        android:id="@+id/tvLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginEnd="142dp"
+        android:layout_marginTop="-96dp"
+        android:text="TextView"
+        android:textColor="@color/black"/>
 
 </RelativeLayout>

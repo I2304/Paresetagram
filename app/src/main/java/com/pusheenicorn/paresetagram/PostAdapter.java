@@ -78,8 +78,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         @BindView(R.id.tvUser) TextView tvUser;
 
         public ViewHolder(View itemView) {
+
             super(itemView);
             ButterKnife.bind(this, itemView);
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the tweet at the position, this won't work if the class is static
+                Post post = mPosts.get(position);
+            }
+
             itemView.setOnClickListener(this);
         }
 

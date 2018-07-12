@@ -28,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvLocation;
     TextView tvUser;
     ImageView ivImage;
+    TextView tvLikes;
     Context context;
     Post post;
 
@@ -43,6 +44,7 @@ public class DetailActivity extends AppCompatActivity {
         tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
         tvLocation = (TextView) findViewById(R.id.tvLocation);
         tvUser = (TextView) findViewById(R.id.tvUser);
+        tvLikes = (TextView) findViewById(R.id.tvLikes);
         ivImage = (ImageView) findViewById(R.id.ivImage);
 
         tvUserMain.setText(post.getUser().getUsername());
@@ -56,7 +58,7 @@ public class DetailActivity extends AppCompatActivity {
 
         tvLocation.setText(post.getLocation());
         tvUser.setText(post.getUser().getUsername());
-
+        tvLikes.setText(post.getLikes().toString());
         context = this;
 
         Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
@@ -92,11 +94,21 @@ public class DetailActivity extends AppCompatActivity {
 
     public void onLike(View view) {
         ImageButton aButton = (ImageButton)view;
-        if (!post.liked) {
-            aButton.setImageResource(R.drawable.ufi_heart);
+        if (post.liked == false) {
+            aButton.setImageResource(R.drawable.ufi_heart_active);
+            Number num = post.getLikes();
+            int numLikes = num.intValue() + 1;
+            Number newNum = (Number) numLikes;
+            post.setLikes(newNum);
+            tvLikes.setText(numLikes + "");
         }
         else {
-            aButton.setImageResource(R.drawable.ufi_heart_active);
+            aButton.setImageResource(R.drawable.ufi_heart);
+            Number num = post.getLikes();
+            int numLikes = num.intValue() - 1;
+            Number newNum = (Number) numLikes;
+            post.setLikes(newNum);
+            tvLikes.setText(numLikes + "");
         }
         post.liked = !post.liked;
     }

@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/ivImage"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -24,11 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/ivImage"
         android:layout_below="@+id/ivLike"
+        android:paddingLeft="10dp"
         android:text="Username"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:textColor="@color/black"
-        android:textColor="@color/black"/>
+        tools:textColor="@color/black" />
 
     <TextView
         android:id="@+id/tvDescription"
@@ -39,16 +40,19 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/tvUser"
+        android:paddingBottom="10dp"
         android:text="Caption"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="16sp" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivLike"
-        android:layout_width="30dp"
-        android:layout_height="27dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/ivImage"
-        android:layout_toStartOf="@+id/ivComment"
+        android:layout_marginStart="18dp"
+        android:background="@android:color/transparent"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ufi_heart" />
 
@@ -56,9 +60,9 @@
         android:id="@+id/ivComment"
         android:layout_width="30dp"
         android:layout_height="25dp"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/ivImage"
-        android:layout_marginEnd="-132dp"
-        android:layout_toStartOf="@+id/ivDirect"
+        android:layout_marginStart="63dp"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ufi_comment" />
 
@@ -68,17 +72,17 @@
         android:layout_height="34dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/ivImage"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="105dp"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ufi_new_direct" />
 
     <ImageView
         android:id="@+id/ivSave"
-        android:layout_width="wrap_content"
+        android:layout_width="23dp"
         android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/ivImage"
-        android:layout_marginEnd="26dp"
+        android:layout_marginEnd="15dp"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ufi_save_new" />
 
