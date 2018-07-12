@@ -1,6 +1,7 @@
 package com.pusheenicorn.paresetagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -85,7 +86,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         @Override
         // when the user clicks on a row, show DetailsActivity for the selected movie
         public void onClick(View v) {
-            // TODO - add a detail view
+            int position = getAdapterPosition();
+            // make sure the position is valid, i.e. actually exists in the view
+            if (position != RecyclerView.NO_POSITION) {
+                // get the tweet at the position, this won't work if the class is static
+                Post post = mPosts.get(position);
+                // create intent for the new activity
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra("post", post);
+                // show the activity
+                context.startActivity(intent);
+            }
         }
     }
 

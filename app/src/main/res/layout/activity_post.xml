@@ -74,7 +74,7 @@
         android:layout_height="144dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="96dp"
         android:hint="Caption"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
@@ -89,6 +89,17 @@
         android:fontFamily="@font/amiko"
         android:onClick="onSubmit"
         android:text="POST" />
+
+    <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/etDescription"
+        android:layout_marginBottom="39dp"
+        android:hint="Location"
+        android:textColor="#000000"
+        android:textColorHint="#D3D3D3" />
 
 </RelativeLayout>
 

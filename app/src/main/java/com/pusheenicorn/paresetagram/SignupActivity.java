@@ -21,6 +21,10 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        if(ParseUser.getCurrentUser() != null) {
+            ParseUser.logOut();
+        }
+
         etUserName = (EditText) findViewById(R.id.etUserName);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);

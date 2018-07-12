@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
-                fetchTimelineAsync(0);
+                fetchTimelineAsync(posts.size());
             }
         });
 
@@ -80,10 +80,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
-                    // add the objects
-                    posts.addAll(objects);
-                    // notify the adapter
-                    postAdapter.notifyDataSetChanged();
+                    for (int i = objects.size() - 1; i > -1; i--)
+                    {
+                        posts.add(objects.get(i));
+                        // notify the adapter
+                        postAdapter.notifyDataSetChanged();
+                    }
                 } else {
                     e.printStackTrace();
                 }
@@ -103,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
                     posts.clear();
-                    // add the objects
-                    posts.addAll(objects);
-                    // notify the adapter
-                    postAdapter.notifyDataSetChanged();
+                    for (int i = objects.size() - 1; i > -1; i--)
+                    {
+                        posts.add(objects.get(i));
+                        // notify the adapter
+                        postAdapter.notifyDataSetChanged();
+                    }
                 } else {
                     e.printStackTrace();
                 }

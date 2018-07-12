@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="96dp"
+        android:background="@android:color/white"
+        android:padding="5dp"
+        android:src="@drawable/camera_shadow_fill"
+        tools:background="@color/white" />
+
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ivImage"
+        android:layout_marginTop="74dp"
+        android:text="Username"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvUserMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/ivImage"
+        android:layout_marginBottom="32dp"
+        android:text="Username  "
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/tvUserMain"
+        android:layout_marginStart="143dp"
+        android:text="Caption"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="33dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/ivImage"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginTop="-96dp"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="30dp"
+        android:layout_height="31dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="-96dp"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/ufi_comment" />
+
+
+    <ImageView
+        android:id="@+id/ivSave"
+        android:layout_width="22dp"
+        android:layout_height="25dp"
+        android:layout_alignEnd="@+id/ivImage"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginTop="-96dp"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/ufi_save_new" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@android:color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@android:color/black"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+
+            <ImageView
+                android:id="@+id/logout"
+                android:layout_width="23dp"
+                android:layout_height="19dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="11dp"
+                android:onClick="onLogout"
+                app:srcCompat="@drawable/user"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="219dp" />
+
+            <ImageView
+                android:id="@+id/post"
+                android:layout_width="23dp"
+                android:layout_height="19dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                app:srcCompat="@drawable/instagram_new_post_outline_24"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="219dp"
+                android:onClick="onPost"/>
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="133dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/nav_logo_whiteout"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="219dp"
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ivImage"
+        android:layout_marginTop="139dp"
+        android:text="Timestamp"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ivImage"
+        android:layout_marginTop="112dp"
+        android:text="Location"
+        android:textColor="@color/colorPrimary"
+        />
+
+    <ImageView
+        android:id="@+id/ivDirect"
+        android:layout_width="48dp"
+        android:layout_height="34dp"
+        android:layout_below="@+id/ivImage"
+        android:layout_marginTop="-96dp"
+        android:layout_toEndOf="@+id/ivComment"
+        app:srcCompat="@drawable/ufi_new_direct" />
+
+</RelativeLayout>

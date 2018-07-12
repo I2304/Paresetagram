@@ -36,6 +36,7 @@ public class PostActivity extends AppCompatActivity {
     ImageView ivImage;
     public File photoFile;
     EditText etDescription;
+    EditText etLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class PostActivity extends AppCompatActivity {
         checkPermissionsPlease();
         ivImage = (ImageView) findViewById(R.id.ivImage);
         etDescription = (EditText) findViewById(R.id.etDescription);
+        etLocation = (EditText) findViewById(R.id.etLocation);
     }
 
     private void checkPermissionsPlease() {
@@ -113,12 +115,13 @@ public class PostActivity extends AppCompatActivity {
     public void onSubmit(View v) {
         ParseFile parseFile = new ParseFile(photoFile);
         String description = etDescription.getText().toString();
+        String location = etLocation.getText().toString();
         ParseUser user = ParseUser.getCurrentUser();
-        createPost(description, parseFile, user);
+        createPost(description, parseFile, user, location);
     }
 
     private void createPost(final String description, final ParseFile imageFile,
-                            final ParseUser user) {
+                            final ParseUser user, final String location) {
         imageFile.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -127,6 +130,7 @@ public class PostActivity extends AppCompatActivity {
                     newPost.setDescription(description);
                     newPost.setImage(imageFile);
                     newPost.setUser(user);
+                    newPost.setLocation(location);
                     newPost.saveInBackground();
                     etDescription.setText("");
 

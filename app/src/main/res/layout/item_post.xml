@@ -27,7 +27,8 @@
         android:text="Username"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:textColor="@color/black" />
+        tools:textColor="@color/black"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/tvDescription"
@@ -73,10 +74,11 @@
 
     <ImageView
         android:id="@+id/ivSave"
-        android:layout_width="28dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/ivImage"
-        android:layout_toEndOf="@+id/ivImage"
+        android:layout_marginEnd="26dp"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/ufi_save_new" />
 
