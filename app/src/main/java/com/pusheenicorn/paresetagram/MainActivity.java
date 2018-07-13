@@ -93,13 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
     }
 
-    public void onPost(View v) {
-        Intent intent = new Intent(MainActivity.this, PostActivity.class);
-        startActivity(intent);
-    }
-
     private void loadTopPosts() {
-
         final Post.Query postQuery = new Post.Query();
         postQuery
                 .getTop()
@@ -123,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     public void fetchTimelineAsync(int page) {
@@ -151,12 +146,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         swipeContainer.setRefreshing(false);
-    }
-
-    public void onPerson(View view) {
-        //ParseUser.logOut();
-        Intent i = new Intent(MainActivity.this, PersonalActivity.class);
-        startActivity(i);
     }
 
     public void showProgressBar() {

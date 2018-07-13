@@ -32,7 +32,7 @@
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/ivProfileImage"
         android:background="@android:color/white"
@@ -45,8 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/tvLikes"
-        android:layout_marginBottom="87dp"
+        android:layout_alignStart="@+id/ivLike"
+        android:layout_marginBottom="151dp"
         android:text="Username"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -126,9 +126,9 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/ivProfileImage"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="64dp"
         android:text="Timestamp"
         android:textColor="@color/colorPrimary" />
 
@@ -154,7 +154,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="196dp"
         android:layout_toStartOf="@+id/tvUserMain"
         android:text="Liked by..."
         android:textColor="@color/colorPrimary" />

@@ -2,36 +2,45 @@ package com.pusheenicorn.paresetagram;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.pusheenicorn.paresetagram.Models.Post;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
     ImageView ivProfileImage;
+    ImageView ivUserPost1;
+    ImageView ivUserPost2;
+    ImageView ivUserPost3;
+    ImageView ivUserPost4;
+    ImageView ivUserPost5;
+    ImageView ivUserPost6;
+    ImageView ivUserPost7;
+    ImageView ivUserPost8;
+    ImageView ivUserPost9;
+
     TextView tvUsername;
     Context context;
-    public File photoFile;
-    static final int REQUEST_TAKE_PHOTO = 1;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-    public Bitmap bitmap;
     ProgressBar progressBar;
     ParseUser user;
+    ParseUser current_user;
     Post post;
     BottomNavigationView bottomNavigationView;
+    ArrayList<Post> posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +49,22 @@ public class ProfileActivity extends AppCompatActivity {
 
         user = ParseUser.getCurrentUser();
         post = getIntent().getParcelableExtra("post");
+        current_user = post.getUser();
+
+        posts = new ArrayList<Post>();
 
         setContentView(R.layout.activity_profile);
         ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
         tvUsername = (TextView) findViewById(R.id.tvUsername);
+        ivUserPost1 = (ImageView) findViewById(R.id.ivUserPost1);
+        ivUserPost2 = (ImageView) findViewById(R.id.ivUserPost2);
+        ivUserPost3 = (ImageView) findViewById(R.id.ivUserPost3);
+        ivUserPost4 = (ImageView) findViewById(R.id.ivUserPost4);
+        ivUserPost5 = (ImageView) findViewById(R.id.ivUserPost5);
+        ivUserPost6 = (ImageView) findViewById(R.id.ivUserPost6);
+        ivUserPost7 = (ImageView) findViewById(R.id.ivUserPost7);
+        ivUserPost8 = (ImageView) findViewById(R.id.ivUserPost8);
+        ivUserPost9 = (ImageView) findViewById(R.id.ivUserPost9);
 
         Glide.with(context).load(post.getProfileImage().getUrl()).into(ivProfileImage);
         tvUsername.setText(post.getUser().getUsername());
@@ -72,14 +93,46 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+
+        loadUserPosts();
     }
 
-    public void onPost(View v) {
-        Intent intent = new Intent(ProfileActivity.this, PostActivity.class);
-        startActivity(intent);
-    }
+    private void loadUserPosts() {
+        final Post.Query postQuery = new Post.Query();
+        postQuery
+                .getTop()
+                .withUser();
 
-    public void onPerson(View v) {
-        return;
+        postQuery.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> objects, ParseException e) {
+                if (e == null) {
+                    posts.addAll(objects);
+                    if (objects.size() == 9)
+                    {
+                        Glide.with(context).load(posts.get(0).getImage().getUrl()).
+                                into(ivUserPost1);
+                        Glide.with(context).load(posts.get(1).getImage().getUrl())
+                                .into(ivUserPost2);
+                        Glide.with(context).load(posts.get(2).getImage().getUrl())
+                                .into(ivUserPost3);
+                        Glide.with(context).load(posts.get(3).getImage().getUrl())
+                                .into(ivUserPost4);
+                        Glide.with(context).load(posts.get(4).getImage().getUrl())
+                                .into(ivUserPost5);
+                        Glide.with(context).load(posts.get(5).getImage().getUrl())
+                                .into(ivUserPost6);
+                        Glide.with(context).load(posts.get(6).getImage().getUrl())
+                                .into(ivUserPost7);
+                        Glide.with(context).load(posts.get(7).getImage().getUrl())
+                                .into(ivUserPost8);
+                        Glide.with(context).load(posts.get(8).getImage().getUrl())
+                                .into(ivUserPost9);
+                    }
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

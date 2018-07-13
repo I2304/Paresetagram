@@ -73,7 +73,6 @@ public class Post extends ParseObject {
             setLimit(20);
             return this;
         }
-
         public Query withUser() {
             include("user");
             return this;

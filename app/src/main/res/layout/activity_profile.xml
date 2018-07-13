@@ -7,6 +7,56 @@
     tools:context=".ProfileActivity"
     android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/ivUserPost9"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignStart="@+id/ivUserPost3"
+        android:layout_alignTop="@+id/ivUserPost7"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost7"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_marginBottom="117dp"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost8"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignTop="@+id/ivUserPost7"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost6"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignStart="@+id/ivUserPost3"
+        android:layout_alignTop="@+id/ivUserPost4"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost5"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignTop="@+id/ivUserPost4"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost4"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_marginBottom="210dp"
+        app:srcCompat="@android:color/black" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -51,8 +101,9 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
         android:text="Username"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -67,5 +118,31 @@
         app:itemIconTint="@color/black"
         app:itemTextColor="@color/black"
         app:menu="@menu/menu_bottom_navigation" />
+
+    <ImageView
+        android:id="@+id/ivUserPost3"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/ivUserPost1"
+        android:layout_marginEnd="28dp"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost2"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignTop="@+id/ivUserPost1"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@android:color/black" />
+
+    <ImageView
+        android:id="@+id/ivUserPost1"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_marginTop="192dp"
+        app:srcCompat="@android:color/black" />
 
 </RelativeLayout>
