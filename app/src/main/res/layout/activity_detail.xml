@@ -17,7 +17,8 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:textColor="@color/black" />
+        tools:textColor="@color/black"
+        android:onClick="onProfile"/>
 
     <ImageView
         android:id="@+id/ivProfileImage"

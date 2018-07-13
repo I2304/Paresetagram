@@ -46,6 +46,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         // populate the views according to this data
         holder.tvDescription.setText(post.getDescription());
         holder.tvUser.setText(post.getUser().getUsername());
+        holder.tvUser2.setText(post.getUser().getUsername());
 
         Glide.with(context).load(post.getImage().getUrl()).into(holder.ivImage);
     }
@@ -76,6 +77,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         @BindView(R.id.tvDescription) TextView tvDescription;
         @BindView(R.id.tvUser) TextView tvUser;
+        @BindView(R.id.tvUser2) TextView tvUser2;
 
         public ViewHolder(View itemView) {
 
