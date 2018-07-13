@@ -9,11 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseUser;
 import com.pusheenicorn.paresetagram.Models.Post;
 
 import java.text.DateFormat;
@@ -31,10 +34,13 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvUser;
     ImageView ivImage;
     ImageView ivProfileImage;
+    TextView tvComment1;
+    EditText tvNewComment;
     TextView tvLikes;
     Context context;
     Post post;
     BottomNavigationView bottomNavigationView;
+    Button btnComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,9 @@ public class DetailActivity extends AppCompatActivity {
         tvLikes = (TextView) findViewById(R.id.tvLikes);
         ivImage = (ImageView) findViewById(R.id.ivImage);
         ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
+        tvNewComment = (EditText) findViewById(R.id.tvNewComment);
+        tvComment1 = (TextView) findViewById(R.id.tvComment1);
+        btnComment = (Button) findViewById(R.id.btnComment);
 
         tvUserMain.setText(post.getUser().getUsername());
         tvDescription.setText(post.getDescription());
@@ -91,6 +100,8 @@ public class DetailActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+
+        tvComment1.setText(post.getString("Comment1"));
 
     }
 
@@ -146,5 +157,20 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = new Intent(DetailActivity.this, ProfileActivity.class);
         intent.putExtra("post", post);
         startActivity(intent);
+    }
+
+    public void onComment(View view) {
+        tvNewComment.setVisibility(View.VISIBLE);
+        btnComment.setVisibility(View.VISIBLE);
+    }
+
+
+    public void onCommentThis(View view) {
+        String comment = tvNewComment.getText().toString();
+        tvComment1.setText(ParseUser.getCurrentUser().getUsername() + ": " + comment);
+        tvNewComment.setText("");
+        tvNewComment.setVisibility(View.INVISIBLE);
+        post.put("Comment1", comment);
+        btnComment.setVisibility(View.INVISIBLE);
     }
 }
