@@ -3,11 +3,14 @@ package com.pusheenicorn.paresetagram;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     private SwipeRefreshLayout swipeContainer;
     private Toolbar toolbar;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,29 @@ public class MainActivity extends AppCompatActivity {
         // recycler view setup
         rvPost.setLayoutManager(new LinearLayoutManager(this));
         rvPost.setAdapter(postAdapter);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        return true;
+                    case R.id.action_compose:
+                        Intent intent = new Intent(MainActivity.this,
+                                PostActivity.class);
+                        startActivity(intent);
+                        return true;
+                    case R.id.action_profile:
+                        Intent profileIntent = new Intent(MainActivity.this,
+                                PersonalActivity.class);
+                        startActivity(profileIntent);
+                        return true;
+                }
+                return true;
+            }
+        });
 
         loadTopPosts();
 

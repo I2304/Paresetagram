@@ -9,10 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +44,8 @@ public class PostActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
 
+    BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +55,29 @@ public class PostActivity extends AppCompatActivity {
         etDescription = (EditText) findViewById(R.id.etDescription);
         etLocation = (EditText) findViewById(R.id.etLocation);
         progressBar = (ProgressBar) findViewById(R.id.pbLoading);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                Intent intent = new Intent(PostActivity.this,
+                                        MainActivity.class);
+                                startActivity(intent);
+                                return true;
+                            case R.id.action_compose:
+                                return true;
+                            case R.id.action_profile:
+                                Intent intent3 = new Intent(PostActivity.this,
+                                        PersonalActivity.class);
+                                startActivity(intent3);
+                                return true;
+                        }
+                        return true;
+                    }
+                });
 
     }
 

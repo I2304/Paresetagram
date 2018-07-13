@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -28,6 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
     ProgressBar progressBar;
     ParseUser user;
     Post post;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,29 @@ public class ProfileActivity extends AppCompatActivity {
         tvUsername.setText(post.getUser().getUsername());
 
         progressBar = (ProgressBar) findViewById(R.id.pbLoading);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                Intent intent1 = new Intent(ProfileActivity.this, MainActivity.class);
+                                startActivity(intent1);
+                                return true;
+                            case R.id.action_compose:
+                                Intent intent2 = new Intent(ProfileActivity.this, PostActivity.class);
+                                startActivity(intent2);
+                                return true;
+                            case R.id.action_profile:
+                                Intent intent3 = new Intent(ProfileActivity.this, PersonalActivity.class);
+                                startActivity(intent3);
+                                return true;
+                        }
+                        return true;
+                    }
+                });
     }
 
     public void onPost(View v) {

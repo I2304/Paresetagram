@@ -3,8 +3,11 @@ package com.pusheenicorn.paresetagram;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -31,6 +34,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvLikes;
     Context context;
     Post post;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,29 @@ public class DetailActivity extends AppCompatActivity {
 
         Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
         Glide.with(context).load(post.getProfileImage().getUrl()).into(ivProfileImage);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                Intent intent1 = new Intent(DetailActivity.this, MainActivity.class);
+                                startActivity(intent1);
+                                return true;
+                            case R.id.action_compose:
+                                Intent intent2 = new Intent(DetailActivity.this, PostActivity.class);
+                                startActivity(intent2);
+                                return true;
+                            case R.id.action_profile:
+                                Intent intent3 = new Intent(DetailActivity.this, PersonalActivity.class);
+                                startActivity(intent3);
+                                return true;
+                        }
+                        return true;
+                    }
+                });
 
     }
 

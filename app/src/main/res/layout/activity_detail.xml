@@ -26,16 +26,15 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/tvUsername"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="52dp"
         app:srcCompat="@drawable/camera_shadow_fill" />
 
     <ImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="121dp"
+        android:layout_height="280dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivProfileImage"
         android:background="@android:color/white"
         android:padding="5dp"
         android:src="@drawable/camera_shadow_fill"
@@ -45,8 +44,9 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/ivLike"
-        android:layout_alignTop="@+id/tvDescription"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tvLikes"
+        android:layout_marginBottom="87dp"
         android:text="Username"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -57,10 +57,9 @@
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="55dp"
-        android:layout_marginStart="97dp"
+        android:layout_alignTop="@+id/tvUsername"
+        android:layout_marginLeft="10dp"
+        android:layout_toEndOf="@+id/tvUsername"
         android:text="Caption"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp" />
@@ -99,7 +98,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:background="@android:color/white"
         android:minHeight="?attr/actionBarSize"
         app:titleTextColor="@android:color/black"
@@ -108,30 +107,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp">
-
-            <ImageView
-                android:id="@+id/logout"
-                android:layout_width="23dp"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="11dp"
-                android:onClick="onPerson"
-                app:srcCompat="@drawable/user"
-                tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp" />
-
-            <ImageView
-                android:id="@+id/post"
-                android:layout_width="23dp"
-                android:layout_height="19dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@drawable/instagram_new_post_outline_24"
-                tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp"
-                android:onClick="onPost"/>
+            android:layout_height="50dp">
 
             <ImageView
                 android:id="@+id/logo"
@@ -141,8 +117,7 @@
                 android:layout_centerHorizontal="true"
                 app:srcCompat="@drawable/nav_logo_whiteout"
                 tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp"
-                />
+                tools:layout_editor_absoluteY="219dp" />
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -151,9 +126,9 @@
         android:id="@+id/tvTimestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/ivLike"
-        android:layout_marginBottom="11dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_alignStart="@+id/ivProfileImage"
+        android:layout_marginBottom="5dp"
         android:text="Timestamp"
         android:textColor="@color/colorPrimary" />
 
@@ -179,9 +154,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/ivLike"
-        android:layout_marginBottom="86dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toStartOf="@+id/tvUserMain"
         android:text="Liked by..."
         android:textColor="@color/colorPrimary" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#F5F5F5"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>

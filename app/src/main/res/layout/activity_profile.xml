@@ -10,7 +10,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/white"
@@ -21,30 +21,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp">
-
-            <ImageView
-                android:id="@+id/logout"
-                android:layout_width="23dp"
-                android:layout_height="19dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="11dp"
-                android:onClick="onPerson"
-                app:srcCompat="@drawable/user"
-                tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp" />
-
-            <ImageView
-                android:id="@+id/post"
-                android:layout_width="23dp"
-                android:layout_height="19dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@drawable/instagram_new_post_outline_24"
-                tools:layout_editor_absoluteX="178dp"
-                tools:layout_editor_absoluteY="219dp"
-                android:onClick="onPost"/>
+            android:layout_height="50dp">
 
             <ImageView
                 android:id="@+id/logo"
@@ -80,5 +57,15 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#F5F5F5"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>

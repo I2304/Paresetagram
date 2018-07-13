@@ -7,8 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,6 +42,8 @@ public class PersonalActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     public Bitmap bitmap;
 
+    BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,29 @@ public class PersonalActivity extends AppCompatActivity {
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
         Glide.with(this).load(ParseUser.getCurrentUser()
                 .getParseFile("profileImage").getUrl()).into(ivProfileImage);
+
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener
+                (new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                Intent intent = new Intent(PersonalActivity.this,
+                                        MainActivity.class);
+                                startActivity(intent);
+                                return true;
+                            case R.id.action_compose:
+                                Intent newIntent = new Intent(PersonalActivity.this,
+                                        PostActivity.class);
+                                startActivity(newIntent);
+                                return true;
+                            case R.id.action_profile:
+                                return true;
+                        }
+                        return true;
+                    }
+                });
 
     }
 
