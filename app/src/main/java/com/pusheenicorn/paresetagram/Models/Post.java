@@ -13,7 +13,16 @@ public class Post extends ParseObject {
     private static final String KEY_USER = "user";
     private static final String KEY_LOCATION = "location";
     private static final String KEY_LIKED = "likes";
+    private static final String KEY_PROFILE_IMAGE = "profileImage";
     public boolean liked = false;
+
+    public ParseFile getProfileImage() {
+        return getUser().getParseFile(KEY_PROFILE_IMAGE);
+    }
+
+    public void setProfileImage(ParseFile image) {
+        getUser().put(KEY_PROFILE_IMAGE, image);
+    }
 
     public Number getLikes() {
         return getNumber(KEY_LIKED);
@@ -22,7 +31,6 @@ public class Post extends ParseObject {
     public void setLikes(Number number) {
         put(KEY_LIKED, number);
     }
-
 
     public String getLocation() {
         return getString(KEY_LOCATION);

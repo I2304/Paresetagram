@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -38,6 +39,8 @@ public class PostActivity extends AppCompatActivity {
     EditText etDescription;
     EditText etLocation;
 
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,8 @@ public class PostActivity extends AppCompatActivity {
         ivImage = (ImageView) findViewById(R.id.ivImage);
         etDescription = (EditText) findViewById(R.id.etDescription);
         etLocation = (EditText) findViewById(R.id.etLocation);
+        progressBar = (ProgressBar) findViewById(R.id.pbLoading);
+
     }
 
     private void checkPermissionsPlease() {
@@ -122,6 +127,7 @@ public class PostActivity extends AppCompatActivity {
 
     private void createPost(final String description, final ParseFile imageFile,
                             final ParseUser user, final String location) {
+        showProgressBar();
         imageFile.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
@@ -131,8 +137,8 @@ public class PostActivity extends AppCompatActivity {
                     newPost.setImage(imageFile);
                     newPost.setUser(user);
                     newPost.setLocation(location);
+                    newPost.setLikes((Number) 0);
                     newPost.saveInBackground();
-                    etDescription.setText("");
 
                     Intent intent = new Intent(PostActivity.this, MainActivity.class);
                     startActivity(intent);
@@ -142,5 +148,17 @@ public class PostActivity extends AppCompatActivity {
                 }
             }
         });
+        hideProgressBar();
+    }
+
+
+    public void showProgressBar() {
+        // Show progress item
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        progressBar.setVisibility(View.INVISIBLE);
     }
 }

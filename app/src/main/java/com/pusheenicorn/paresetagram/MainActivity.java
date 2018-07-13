@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseUser;
 import com.pusheenicorn.paresetagram.Models.Post;
 
 import java.util.ArrayList;
@@ -34,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        toolbar =  (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         context = this;
         progressBar = (ProgressBar) findViewById(R.id.pbLoading);
         rvPost = (RecyclerView) findViewById(R.id.rvPost);
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadTopPosts() {
+
         final Post.Query postQuery = new Post.Query();
         postQuery
                 .getTop()
@@ -80,12 +82,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
+                    showProgressBar();
                     for (int i = objects.size() - 1; i > -1; i--)
                     {
                         posts.add(objects.get(i));
                         // notify the adapter
                         postAdapter.notifyDataSetChanged();
                     }
+                    hideProgressBar();
+
                 } else {
                     e.printStackTrace();
                 }
@@ -94,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void fetchTimelineAsync(int page) {
-        showProgressBar();
         final Post.Query postQuery = new Post.Query();
         postQuery
                 .getTop()
@@ -104,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(List<Post> objects, ParseException e) {
                 if (e == null) {
+                    showProgressBar();
                     posts.clear();
                     for (int i = objects.size() - 1; i > -1; i--)
                     {
@@ -111,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                         // notify the adapter
                         postAdapter.notifyDataSetChanged();
                     }
+                    hideProgressBar();
                 } else {
                     e.printStackTrace();
                 }
@@ -118,12 +124,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         swipeContainer.setRefreshing(false);
-        hideProgressBar();
     }
 
-    public void onLogout(View view) {
-        ParseUser.logOut();
-        Intent i = new Intent(MainActivity.this, HomeActivity.class);
+    public void onPerson(View view) {
+        //ParseUser.logOut();
+        Intent i = new Intent(MainActivity.this, PersonalActivity.class);
         startActivity(i);
     }
 

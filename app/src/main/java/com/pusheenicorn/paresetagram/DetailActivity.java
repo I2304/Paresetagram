@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.parse.ParseUser;
 import com.pusheenicorn.paresetagram.Models.Post;
 
 import java.text.DateFormat;
@@ -28,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvLocation;
     TextView tvUser;
     ImageView ivImage;
+    ImageView ivProfileImage;
     TextView tvLikes;
     Context context;
     Post post;
@@ -39,13 +39,14 @@ public class DetailActivity extends AppCompatActivity {
 
         post = getIntent().getParcelableExtra("post");
 
-        tvUserMain = (TextView) findViewById(R.id.tvUserMain);
+        tvUserMain = (TextView) findViewById(R.id.tvUsername);
         tvDescription = (TextView) findViewById(R.id.tvDescription);
         tvTimestamp = (TextView) findViewById(R.id.tvTimestamp);
         tvLocation = (TextView) findViewById(R.id.tvLocation);
-        tvUser = (TextView) findViewById(R.id.tvUser);
+        tvUser = (TextView) findViewById(R.id.tvUserMain);
         tvLikes = (TextView) findViewById(R.id.tvLikes);
         ivImage = (ImageView) findViewById(R.id.ivImage);
+        ivProfileImage = (ImageView) findViewById(R.id.ivProfileImage);
 
         tvUserMain.setText(post.getUser().getUsername());
         tvDescription.setText(post.getDescription());
@@ -58,10 +59,11 @@ public class DetailActivity extends AppCompatActivity {
 
         tvLocation.setText(post.getLocation());
         tvUser.setText(post.getUser().getUsername());
-        tvLikes.setText(post.getLikes().toString());
+        tvLikes.setText("Likes: " + post.getLikes().toString());
         context = this;
 
         Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
+        Glide.with(context).load(post.getProfileImage().getUrl()).into(ivProfileImage);
 
     }
 
@@ -70,9 +72,9 @@ public class DetailActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onLogout(View view) {
-        ParseUser.logOut();
-        Intent i = new Intent(DetailActivity.this, HomeActivity.class);
+    public void onPerson(View view) {
+        //ParseUser.logOut();
+        Intent i = new Intent(DetailActivity.this, PersonalActivity.class);
         startActivity(i);
     }
 
@@ -100,7 +102,7 @@ public class DetailActivity extends AppCompatActivity {
             int numLikes = num.intValue() + 1;
             Number newNum = (Number) numLikes;
             post.setLikes(newNum);
-            tvLikes.setText(numLikes + "");
+            tvLikes.setText("Likes" + numLikes);
         }
         else {
             aButton.setImageResource(R.drawable.ufi_heart);
@@ -108,8 +110,14 @@ public class DetailActivity extends AppCompatActivity {
             int numLikes = num.intValue() - 1;
             Number newNum = (Number) numLikes;
             post.setLikes(newNum);
-            tvLikes.setText(numLikes + "");
+            tvLikes.setText("Likes: " + numLikes);
         }
         post.liked = !post.liked;
+    }
+
+    public void onProfile(View v) {
+        Intent intent = new Intent(DetailActivity.this, ProfileActivity.class);
+        intent.putExtra("post", post);
+        startActivity(intent);
     }
 }
