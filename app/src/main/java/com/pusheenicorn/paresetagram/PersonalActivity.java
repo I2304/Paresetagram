@@ -52,8 +52,11 @@ public class PersonalActivity extends AppCompatActivity {
         tvUsername = (TextView) findViewById(R.id.tvUsername);
 
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
-        Glide.with(this).load(ParseUser.getCurrentUser()
-                .getParseFile("profileImage").getUrl()).into(ivProfileImage);
+        if (ParseUser.getCurrentUser().getParseFile("profileImage") != null)
+        {
+            Glide.with(this).load(ParseUser.getCurrentUser()
+                    .getParseFile("profileImage").getUrl()).into(ivProfileImage);
+        }
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener

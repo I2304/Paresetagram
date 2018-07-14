@@ -148,6 +148,7 @@ public class DetailActivity extends AppCompatActivity {
             int numLikes = num.intValue() - 1;
             Number newNum = (Number) numLikes;
             post.setLikes(newNum);
+
             tvLikes.setText("Likes: " + numLikes);
         }
         post.liked = !post.liked;
